@@ -12,7 +12,16 @@ def display_widget(title, value, weekly_data, col, color):
     
     formatted_value = f"{value:,}"  # Format the value with thousand separators
     fig = px.bar(weekly_data, x='week_range', y='user_base', title=f"{title} Weekly Growth", color_discrete_sequence=[color])
-    fig.update_layout(margin=dict(l=0, r=0, t=30, b=0), height=250)  # Increase the height of the graph
+    fig.update_layout(
+        margin=dict(l=0, r=0, t=30, b=0), 
+        height=250,  # Increase the height of the graph
+        plot_bgcolor='#1f1f1f',  # Background color
+        paper_bgcolor='#1f1f1f',  # Paper color
+        font=dict(color='#ffffff'),  # Font color
+        title_font=dict(size=20, color='#ffcc00', family="Arial"),  # Title font
+        xaxis=dict(title='Week Range', tickangle=-45),  # X-axis title and angle
+        yaxis=dict(title='User Base')  # Y-axis title
+    )
     
     col.markdown(f"""
         <div class="dashboard-widget">
